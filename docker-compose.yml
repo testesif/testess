@@ -19,7 +19,7 @@ services:
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - "8080:80"
+      - "8090:80"
     depends_on:
       - web
       - index  # Adicionar dependência ao container de índice
@@ -28,7 +28,7 @@ services:
     build:
       context: ./index
     ports:
-      - "80:80"
+      - "8080:80"
 
 volumes:
   db_data:
