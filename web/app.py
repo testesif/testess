@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request, redirect, url_for, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -21,13 +21,7 @@ def form():
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('form'))
-    return '''
-        <form method="post">
-            Name: <input type="text" name="name"><br>
-            Email: <input type="text" name="email"><br>
-            <input type="submit" value="Submit">
-        </form>
-    '''
+    return render_template('form.html')
 
 if __name__ == "__main__":
     with app.app_context():
